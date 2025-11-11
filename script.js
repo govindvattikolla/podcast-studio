@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Observe all animated elements
+            
             const elementsToAnimate = document.querySelectorAll('.studio-header, .studio-image, .floating-actions');
             elementsToAnimate.forEach(el => observer.observe(el));
 
-            // Trigger animation immediately if section is in viewport on load
+           
             setTimeout(() => {
                 const section = document.querySelector('.studio-section');
                 const rect = section.getBoundingClientRect();
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
 
-        // Add smooth scroll behavior
+      
         document.documentElement.style.scrollBehavior = 'smooth';
         
 

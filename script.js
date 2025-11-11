@@ -94,20 +94,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
         });
 
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
 
-        // Open WhatsApp
-        function openWhatsApp() {
-            const phoneNumber = '1234567890'; // Replace with actual number
-            const message = encodeURIComponent('Hello! I am interested in booking the studio space.');
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-        }
+// Scroll to top function
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // WhatsApp open function
+  function openWhatsApp() {
+    window.open("https://wa.me/91XXXXXXXXXX", "_blank"); 
+  }
 
         // Add smooth scroll behavior
         document.documentElement.style.scrollBehavior = 'smooth';

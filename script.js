@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // 4th section
           
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.2,
+            rootMargin: '100px 0px '
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -100,19 +100,19 @@ document.addEventListener("DOMContentLoaded", function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // WhatsApp open function
   function openWhatsApp() {
     window.open("https://wa.me/91XXXXXXXXXX", "_blank"); 
   }
 
-      
+
         document.documentElement.style.scrollBehavior = 'smooth';
         
 
+        // 5th section
 
         (function(){
-      // IntersectionObserver to trigger animations when cards come into view
-      const options = { root: null, rootMargin: '0px', threshold: 0.18 };
+     
+      const options = { root: null, rootMargin: ' 0px', threshold: 0.2 };
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -123,4 +123,42 @@ document.addEventListener("DOMContentLoaded", function() {
       }, options);
 
       document.querySelectorAll('.sbf-card').forEach(card => observer.observe(card));
-    })();
+    } )();
+
+     // Intersection Observer for scroll animations
+        const observerOptions3 = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer3 = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions3);
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.testimonial-header');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const cta = document.querySelector('.testimonial-cta');
+
+            if (header) observer3.observe(header);
+            cards.forEach(card => observer3.observe(card));
+            if (cta) observer3.observe(cta);
+        });
+
+        // Book Studio Function
+        function bookStudio() {
+            alert('Redirecting to booking page...');
+            // Add your booking logic here
+        }
+
+
+
+    
+
+
+  

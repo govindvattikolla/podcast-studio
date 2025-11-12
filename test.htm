@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Space Section</title>
+    <title>Testimonials - Podcast Studio</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
     <style>
         * {
             margin: 0;
@@ -12,429 +16,497 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
             overflow-x: hidden;
         }
 
-        /* Studio Space Section */
-        .studio-section {
-            padding: 80px 60px;
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 120px 40px;
             background: #ffffff;
             position: relative;
-        }
-
-        .studio-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-
-        /* Left Column - Header + Large Image */
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        /* Header Content */
-        .studio-header {
-            opacity: 0;
-            transform: translateX(-80px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .studio-header.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .studio-header h2 {
-            font-size: clamp(32px, 4vw, 56px);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            color: #000000;
-        }
-
-        .studio-header p {
-            font-size: clamp(15px, 1.5vw, 18px);
-            line-height: 1.6;
-            color: #333333;
-            font-weight: 400;
-            max-width: 600px;
-        }
-
-        /* Image Cards */
-        .studio-image {
-            position: relative;
-            border-radius: 24px;
             overflow: hidden;
-            opacity: 0;
-            transform: scale(0.85) translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .studio-image.animate {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        .studio-image.large {
-            height: 600px;
-            transition-delay: 0.15s;
-        }
-
-        .studio-image.small {
-            height: 340px;
-        }
-
-        .studio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .studio-image:hover img {
-            transform: scale(1.08);
-        }
-
-        /* Right Column - Two Images Stacked */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .right-column .studio-image:nth-child(1) {
-            transition-delay: 0.3s;
-        }
-
-        .right-column .studio-image:nth-child(2) {
-            transition-delay: 0.45s;
-        }
-
-        /* Floating Action Buttons */
-        .floating-actions {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateX(80px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            transition-delay: 0.6s;
-        }
-
-        .floating-actions.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fab-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            border: none;
-        }
-
-        .fab-button:hover {
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-        }
-
-        .fab-button:active {
-            transform: translateY(-3px) scale(1);
-        }
-
-        .fab-top {
-            background: #000000;
-            color: #ffffff;
-        }
-
-        .fab-whatsapp {
-            background: #25D366;
-            color: #ffffff;
-        }
-
-        .fab-button svg {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
-        }
-
-        /* Image Overlay on Hover */
-        .studio-image::after {
-            content: '';
+        /* Background Elements */
+        .bg-pattern {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+            opacity: 0.02;
+            background-image: radial-gradient(circle, #FF6B00 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .testimonial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 80px;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .studio-image:hover::after {
+        .testimonial-header.animate {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .studio-section {
-                padding: 60px 40px;
-            }
+        .testimonial-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #FF6B00;
+            margin-bottom: 20px;
+            padding: 8px 20px;
+            background: rgba(255, 107, 0, 0.08);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
 
-            .studio-container {
-                gap: 24px;
-            }
+        .testimonial-header h2 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+        }
 
-            .left-column,
-            .right-column {
-                gap: 24px;
-            }
+        .testimonial-header p {
+            font-size: clamp(16px, 1.8vw, 20px);
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
 
-            .studio-image.large {
-                height: 500px;
-            }
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
 
-            .studio-image.small {
-                height: 300px;
+        .testimonial-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .testimonial-card.animate {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .testimonial-card:hover {
+            border-color: #FF6B00;
+            box-shadow: 0 12px 40px rgba(255, 107, 0, 0.15);
+            transform: translateY(-8px) scale(1);
+        }
+
+        /* Quote Icon */
+        .quote-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #FF6B00, #FF8C3A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+        }
+
+        .quote-icon::before {
+            content: '"';
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        /* Rating Stars */
+        .rating {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+
+        .star svg {
+            width: 100%;
+            height: 100%;
+            fill: #FF6B00;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.2));
+        }
+
+        /* Testimonial Text */
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333333;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Author Info */
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 2px solid #f5f5f5;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B00, #FF8C3A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .author-details h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+
+        .author-details p {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* CTA Section */
+        .testimonial-cta {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: 0.4s;
+        }
+
+        .testimonial-cta.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, #FF6B00, #FF8C3A);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+            background: linear-gradient(135deg, #FF8C3A, #FF6B00);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Decorative Elements */
+        .decor-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .decor-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #FF6B00;
+            top: -200px;
+            right: -200px;
+        }
+
+        .decor-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #FF8C3A;
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
             }
         }
 
-        @media (max-width: 968px) {
-            .studio-section {
-                padding: 50px 30px;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .testimonial-section {
+                padding: 100px 30px;
             }
 
-            .studio-container {
+            .testimonial-header {
+                margin-bottom: 60px;
+            }
+
+            .testimonials-grid {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-section {
+                padding: 80px 20px;
+            }
+
+            .testimonial-header h2 {
+                font-size: 32px;
+            }
+
+            .testimonials-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .studio-header h2 {
-                font-size: 38px;
-            }
-
-            .studio-header p {
-                font-size: 16px;
-            }
-
-            .studio-image.large {
-                height: 450px;
-            }
-
-            .studio-image.small {
-                height: 280px;
-            }
-
-            .left-column,
-            .right-column {
                 gap: 20px;
             }
 
-            .floating-actions {
-                bottom: 30px;
-                right: 30px;
+            .testimonial-card {
+                padding: 32px 24px;
             }
 
-            .fab-button {
-                width: 56px;
-                height: 56px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .studio-section {
-                padding: 40px 20px;
+            .testimonial-text {
+                font-size: 15px;
             }
 
-            .studio-container {
-                gap: 20px;
-            }
-
-            .studio-header {
-                margin-bottom: 10px;
-            }
-
-            .studio-header h2 {
-                font-size: 28px;
-                margin-bottom: 12px;
-            }
-
-            .studio-header p {
-                font-size: 14px;
-                line-height: 1.5;
-            }
-
-            .studio-image {
-                border-radius: 18px;
-            }
-
-            .studio-image.large {
-                height: 320px;
-            }
-
-            .studio-image.small {
-                height: 240px;
-            }
-
-            .left-column,
-            .right-column {
-                gap: 16px;
-            }
-
-            .floating-actions {
-                bottom: 20px;
-                right: 20px;
-                gap: 12px;
-            }
-
-            .fab-button {
-                width: 52px;
-                height: 52px;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            }
-
-            .fab-button svg {
-                width: 22px;
-                height: 22px;
+            .cta-button {
+                padding: 16px 40px;
+                width: 100%;
+                max-width: 300px;
             }
         }
 
         @media (max-width: 480px) {
-            .studio-header h2 {
-                font-size: 24px;
+            .testimonial-section {
+                padding: 60px 16px;
             }
 
-            .studio-image.large {
-                height: 280px;
+            .testimonial-header h2 {
+                font-size: 28px;
             }
 
-            .studio-image.small {
-                height: 220px;
+            .testimonial-card {
+                padding: 28px 20px;
+            }
+
+            .quote-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .quote-icon::before {
+                font-size: 28px;
+            }
+
+            .author-avatar {
+                width: 48px;
+                height: 48px;
+            }
+
+            .author-details h4 {
+                font-size: 16px;
             }
         }
+        
     </style>
 </head>
 <body>
-    <section class="studio-section">
-        <div class="studio-container">
-            <!-- Left Column -->
-            <div class="left-column">
-                <!-- Header -->
-                <div class="studio-header">
-                    <h2>A SPACE BUILT FOR<br>CREATORS</h2>
-                    <p>Studio Space 540sqft* with a studio shooting area of 27ft by 20ft and 13.5ft height.</p>
+    <!-- testimonials -->
+ <section class="testimonial-section">
+        <div class="bg-pattern"></div>
+        <div class="decor-orb decor-orb-1"></div>
+        <div class="decor-orb decor-orb-2"></div>
+
+        <div class="testimonial-container">
+        
+            <div class="testimonial-header">
+                <span class="testimonial-label">Testimonials</span>
+                <h2>What Our Creators Say</h2>
+                <p>Don't just take our word for it - hear from podcasters who've transformed their content with our studio</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Review 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"></div>
+                        <div class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div>
+
+                    <p class="testimonial-text">
+                        "The studio quality is absolutely incredible. The acoustics are perfect, and the equipment is top-notch. Our podcast has never sounded better since we started recording here."
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-details">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Host of "Tech Talks Daily"</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Large Red Studio Image -->
-                <div class="studio-image large">
-                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&q=80" alt="Red Studio Setup with Professional Equipment">
+                <!-- rev 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"></div>
+                         <div class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div>
+
+                    <p class="testimonial-text">
+                        "Professional setup with amazing support staff. They helped us every step of the way, from setup to post-production. Highly recommend for serious podcasters!"
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-details">
+                            <h4>James Chen</h4>
+                            <p>Producer at "Story Hour Podcast"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rev 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"></div>
+                   <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+
+                    <p class="testimonial-text">
+                        "As a beginner, I was nervous about recording my first podcast. The team made everything so easy and welcoming. The studio space is inspiring and the results are phenomenal!"
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar">ER</div>
+                        <div class="author-details">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Creator of "Mindful Moments"</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Column -->
-            <div class="right-column">
-                <!-- Yellow Studio Image -->
-                <div class="studio-image small">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80" alt="Yellow Studio Setup with Modern Furniture">
-                </div>
-
-                <!-- Green Studio Image -->
-                <div class="studio-image small">
-                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80" alt="Green Studio Setup with Elegant Design">
-                </div>
+            <!-- CTA -->
+            <div class="testimonial-cta">
+                <button class="cta-button" onclick="bookStudio()">Book Your Session Today</button>
             </div>
-        </div>
-
-        <!-- Floating Action Buttons -->
-        <div class="floating-actions">
-            <button class="fab-button fab-top" onclick="scrollToTop()" aria-label="Scroll to top">
-                <svg viewBox="0 0 24 24">
-                    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-                </svg>
-            </button>
-            <button class="fab-button fab-whatsapp" onclick="openWhatsApp()" aria-label="Contact via WhatsApp">
-                <svg viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-            </button>
         </div>
     </section>
 
-    
-
     <script>
         // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+        const observerOptions3 = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer3 = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
-                } else {
-                    // Reset animation when scrolling out of view
-                    entry.target.classList.remove('animate');
                 }
             });
-        }, observerOptions);
+        }, observerOptions3);
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Observe all animated elements
-            const elementsToAnimate = document.querySelectorAll('.studio-header, .studio-image, .floating-actions');
-            elementsToAnimate.forEach(el => observer.observe(el));
+            const header = document.querySelector('.testimonial-header');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const cta = document.querySelector('.testimonial-cta');
 
-            // Trigger animation immediately if section is in viewport on load
-            setTimeout(() => {
-                const section = document.querySelector('.studio-section');
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    elementsToAnimate.forEach(el => el.classList.add('animate'));
-                }
-            }, 100);
+            if (header) observer3.observe(header);
+            cards.forEach(card => observer3.observe(card));
+            if (cta) observer3.observe(cta);
         });
 
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        // Book Studio Function
+        function bookStudio() {
+            alert('Redirecting to booking page...');
+            // Add your booking logic here
         }
-
-        // Open WhatsApp
-        function openWhatsApp() {
-            const phoneNumber = '1234567890'; // Replace with actual number
-            const message = encodeURIComponent('Hello! I am interested in booking the studio space.');
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-        }
-
-        // Add smooth scroll behavior
-        document.documentElement.style.scrollBehavior = 'smooth';
     </script>
 </body>
 </html>

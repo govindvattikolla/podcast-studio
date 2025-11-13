@@ -62,37 +62,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // 4th section
           
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '100px 0px '
-        };
+       const observerOptions = {
+  threshold: 0.05, 
+  rootMargin: '120px 0px' 
+};
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                } else {
-                    // Reset animation when scrolling out of view
-                    entry.target.classList.remove('animate');
-                }
-            });
-        }, observerOptions);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+    } else {
+      entry.target.classList.remove('animate');
+    }
+  });
+}, observerOptions);
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            const elementsToAnimate = document.querySelectorAll('.studio-header, .studio-image, .floating-actions');
-            elementsToAnimate.forEach(el => observer.observe(el));
+document.addEventListener('DOMContentLoaded', () => {
+  const elementsToAnimate = document.querySelectorAll('.studio-header, .studio-image, .floating-actions');
+  elementsToAnimate.forEach(el => observer.observe(el));
 
-           
-            setTimeout(() => {
-                const section = document.querySelector('.studio-section');
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    elementsToAnimate.forEach(el => el.classList.add('animate'));
-                }
-            }, 100);
-        });
+  // Small delay to check visible elements immediately on load
+  requestAnimationFrame(() => {
+    const section = document.querySelector('.studio-section');
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        elementsToAnimate.forEach(el => el.classList.add('animate'));
+      }
+    }
+  });
+});
 
 
 // Scroll to top function
